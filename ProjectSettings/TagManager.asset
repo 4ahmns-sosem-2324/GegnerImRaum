@@ -9,6 +9,9 @@ TagManager:
   - Destroyer
   - MiniWorldCamera
   - Water
+  - Enemy
+  - Fire
+  - bullet
   layers:
   - Default
   - TransparentFX
