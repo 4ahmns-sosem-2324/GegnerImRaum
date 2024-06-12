@@ -22,6 +22,7 @@ public class MunitionsManagement : MonoBehaviour
             {
                 munition++;
                 PlayerPrefs.SetInt("munition", munition);
+                Debug.Log("Munition gesendet");
             }
         }
     }
