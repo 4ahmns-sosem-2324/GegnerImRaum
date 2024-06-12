@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shotable : MonoBehaviour
 {
-    public int currentHealth = 1;
+    public int currentHealth = 3;
     public int killScore = 1;
     public SpawnEnemy enemySpawnScript;
 
@@ -23,6 +23,13 @@ public class Shotable : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "bullet")
+        {
+            currentHealth--;
+        }
+    }
+    private void Update()
+    {
+        if (currentHealth <= 0)
         {
             Destruction();
         }

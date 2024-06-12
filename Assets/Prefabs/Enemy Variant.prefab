@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 516fb1146e82e054aa86921f7a9a2518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 1
+  currentHealth: 3
   killScore: 1
   enemySpawnScript: {fileID: 0}
 --- !u!195 &8037798378321183670
