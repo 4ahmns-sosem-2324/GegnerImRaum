@@ -5,7 +5,7 @@ public class Pistol : MonoBehaviour
     public GameObject bullet;
     public Transform spawnPoint;
     public float bulletSpeed = 20f;
-    public int fireRate;
+    public int munition = 10;
 
     public void FireBullet()
     {
@@ -21,10 +21,15 @@ public class Pistol : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        PlayerPrefs.SetInt("munition", munition);
+        if (munition > 0)
         {
-            FireBullet();
-
+            if (Input.GetMouseButtonDown(0))
+            {
+                FireBullet();
+                munition--;
+            }
         }
+       
     }
 }
