@@ -15,10 +15,11 @@ public class MunitionsManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerPrefs.GetInt("munition");
+        munition = PlayerPrefs.GetInt("munition");
+                         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (munition <= 10)
+            if (munition < 10)
             {
                 munition++;
                 PlayerPrefs.SetInt("munition", munition);
