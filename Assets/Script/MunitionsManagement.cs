@@ -19,8 +19,12 @@ public class MunitionsManagement : MonoBehaviour
         munition = PlayerPrefs.GetInt("munition");
         if (Input.GetMouseButtonDown(0))
         {
-            munition--;
-            PlayerPrefs.SetInt("munition", munition);
+            if (munition >= 0)
+            {
+                munition--;
+                PlayerPrefs.SetInt("munition", munition);
+            }
+            
         }
                          
         if (Input.GetKeyDown(KeyCode.Space))
