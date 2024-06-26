@@ -11,9 +11,9 @@ public class Pistol : MonoBehaviour
     public int munition = 10;
     public bool triggerValue;
 
-    private InputDevice leftController;
-    private InputDevice rightController;
-
+  
+    private XRController leftController;
+    private XRController rightController;
     public void FireBullet()
     {
         //--- Instantiate a bullet and fire it forward
@@ -31,16 +31,20 @@ public class Pistol : MonoBehaviour
         PlayerPrefs.SetInt("munition", munition);
         if (munition > 0)
         {
-            if (rightController.isValid)
+            if (rightController != null)
             {
-                float triggerValue;
-                if (rightController.TryGetFeatureValue(CommonUsages.trigger, out triggerValue))
+                // Überprüfen und auslesen des Trigger-Werts des rechten Controllers
+                if (rightController.inputDevice.TryGetFeatureValue(CommonUsages.trigger, out float rightTriggerValue))
                 {
-                    Debug.Log("Right Trigger Value: " + triggerValue);
+                    Debug.Log("Right Trigger Value: " + rightTriggerValue);
+
                     FireBullet();
                     munition--;
                 }
             }
+          
+                
+            
           
             
         }
@@ -49,17 +53,8 @@ public class Pistol : MonoBehaviour
 
     private void Start()
     {
-        List<InputDevice> inputDevices = new List<InputDevice>();
-        InputDevices.GetDevicesAtXRNode(XRNode.LeftHand, inputDevices);
-        if (inputDevices.Count > 0)
-        {
-            leftController = inputDevices[0];
-        }
-
-        InputDevices.GetDevicesAtXRNode(XRNode.RightHand, inputDevices);
-        if (inputDevices.Count > 0)
-        {
-            rightController = inputDevices[0];
-        }
+        leftController = GameObject.Find("LeftHand Controller").GetComponent<XRController>();
+        rightController = GameObject.Find("RightHand Controller").GetComponent<XRController>();
     }
+
 }
